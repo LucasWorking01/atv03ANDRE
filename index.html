@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mural de Estágios — divulgue sua vaga</title>
+<meta name="description" content="Cadastre sua vaga de estágio e ela aparece na hora na tabela de divulgação.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topo">
+  <a class="marca" href="#inicio">Mural de Estágios</a>
+  <nav>
+    <a href="#cadastrar">Cadastrar vaga</a>
+    <a href="#vagas">Ver vagas <span id="contador" class="contador">0</span></a>
+  </nav>
+</header>
+
+<main id="inicio">
+  <section class="hero">
+    <div class="hero-texto">
+      <h1>Publicou a vaga,<br>já está no mural.</h1>
+      <p>Empresas cadastram a vaga de estágio em um minuto. Estudantes consultam todas na tabela, sem criar conta e sem custo.</p>
+      <a class="botao" href="#cadastrar">Cadastrar uma vaga</a>
+    </div>
+
+    <form id="form-vaga" class="cartao" novalidate>
+      <h2 id="cadastrar">Cadastrar vaga de estágio</h2>
+
+      <label>Título da vaga
+        <input name="titulo" required maxlength="80" placeholder="Ex.: Estágio em Desenvolvimento Web">
+      </label>
+      <label>Empresa
+        <input name="empresa" required maxlength="60" placeholder="Nome da empresa">
+      </label>
+
+      <div class="linha">
+        <label>Área
+          <select name="area" required>
+            <option value="">Selecione</option>
+            <option>Tecnologia</option><option>Administração</option><option>Marketing</option>
+            <option>Engenharia</option><option>Saúde</option><option>Direito</option>
+            <option>Educação</option><option>Outra</option>
+          </select>
+        </label>
+        <label>Modalidade
+          <select name="modalidade" required>
+            <option value="">Selecione</option>
+            <option>Presencial</option><option>Híbrido</option><option>Remoto</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="linha">
+        <label>Cidade
+          <input name="cidade" required maxlength="50" placeholder="Ex.: Fortaleza - CE">
+        </label>
+        <label>Bolsa (R$)
+          <input name="bolsa" inputmode="decimal" placeholder="Ex.: 1.200 ou “a combinar”">
+        </label>
+      </div>
+
+      <label>E-mail ou link para candidatura
+        <input name="contato" required maxlength="120" placeholder="rh@empresa.com ou https://...">
+      </label>
+      <label>Descrição breve
+        <textarea name="descricao" rows="3" maxlength="240" placeholder="Atividades, requisitos e carga horária"></textarea>
+      </label>
+
+      <p id="erro" class="erro" role="alert" hidden></p>
+      <button class="botao" type="submit">Publicar vaga</button>
+    </form>
+  </section>
+
+  <section class="vagas" id="vagas">
+    <div class="vagas-topo">
+      <h2>Vagas publicadas</h2>
+      <input id="busca" type="search" placeholder="Buscar por cargo, empresa, área ou cidade" aria-label="Buscar vagas">
+    </div>
+
+    <div class="tabela-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Vaga</th><th>Empresa</th><th>Área</th><th>Local</th>
+            <th>Bolsa</th><th>Candidatura</th><th>Publicada</th><th><span class="sr">Ações</span></th>
+          </tr>
+        </thead>
+        <tbody id="corpo"></tbody>
+      </table>
+    </div>
+    <p id="vazio" class="vazio" hidden>Nenhuma vaga encontrada. Cadastre a primeira no formulário acima.</p>
+  </section>
+</main>
+
+<footer class="rodape">Mural de Estágios · As vagas ficam salvas neste navegador.</footer>
+<script src="script.js"></script>
+</body>
+</html>
